@@ -7,6 +7,14 @@ use Illuminate\Database\Query\Builder;
 
 class MySqlGrammar extends IlluminateMySqlGrammar
 {
+    /**
+     * Edit for updated requiredmebnt of Illuminate\Database\Query\Grammars\MySqlGrammar
+     * to require a connection passed to the constructor.
+     */
+    public function __construct(Connection $connection = null)
+    {
+        parent::__construct($connection ?? DB::connection());
+    }
 
     /**
      * Compile an insert statement into SQL.
